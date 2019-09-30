@@ -36,7 +36,7 @@ class RegistrationController extends Controller
     {
         $regions = $this->territory->getRegions();
         
-        return view('welcome', ['regions' => $regions]);
+        return view('registration', ['regions' => $regions]);
     }
     
     /**
@@ -90,7 +90,7 @@ class RegistrationController extends Controller
         
         $user = $this->user->where('email', $email)->with('territory')->first();
         if ($user) {
-            return view('response', ['user' => $user]);
+            return view('show_registred_email', ['user' => $user]);
         } elseif ($registrationUserRequest->district) {
             $data['territory_id'] = $registrationUserRequest->district;
             $this->user->create($data);
