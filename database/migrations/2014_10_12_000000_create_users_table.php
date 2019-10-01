@@ -21,15 +21,6 @@ class CreateUsersTable extends Migration
             $table->timestamps();
 	        $table->char('territory_id');
         });
-	    if (Schema::hasColumn('t_koatuu_tree', 'ter_id'))
-	    {
-		    Schema::table('users', function (Blueprint $table) {
-			    $table->foreign('territory_id')
-				    ->references('ter_id')
-				    ->on('t_koatuu_tree');
-		    });
-	    }
-	    
     }
     /**
      * Reverse the migrations.
